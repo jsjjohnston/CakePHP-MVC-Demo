@@ -1,6 +1,7 @@
 <?php
 namespace App\Model\Entity;
 
+use Cake\Auth\DefaultPasswordHasher; // used for password hashing 
 use Cake\ORM\Entity;
 
 /**
@@ -41,4 +42,21 @@ class User extends Entity
     protected $_hidden = [
         'password'
     ];
+
+    /*
+        Password Hasher Code
+        Author: Jay Johnston
+        Created: 15-03-2018
+
+        https://book.cakephp.org/3.0/en/tutorials-and-examples/cms/authentication.html
+
+    */
+    protected function _setPassword($value)
+    {
+        if (strlen($value)) {
+            $hasher = new DefaultPasswordHasher();
+
+            return $hasher->hash($value);
+        }
+    }
 }
