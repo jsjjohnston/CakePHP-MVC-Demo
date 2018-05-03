@@ -59,15 +59,24 @@ CREATE TABLE yeast (
     id INT AUTO_INCREMENT PRIMARY KEY,
     yeast_name VARCHAR(255) NOT NULL,
     type ENUM('Lager', 'Ale'),
-    attenuation_min DECIMAL(2,1),
-    attenuation_max DECIMAL(2,1),
-    temperature_min DECIMAL(2,1),
-    temperature_max DECIMAL(2,1)
+    attenuation_min DECIMAL(4,2),
+    attenuation_max DECIMAL(4,2),
+    temperature_min DECIMAL(3,1),
+    temperature_max DECIMAL(3,1)
 );
+
+INSERT INTO yeast (yeast_name, type, attenuation_min, attenuation_max, temperature_min, temperature_max)
+VALUES
+    ('Australian Ale', 'Ale', 70.00, 75.00, 18.3, 21.1),
+    ('Belgian Ale', 'Ale', 78.00, 85.00, 20.0, 25.6),
+    ('California Ale', 'Ale', 73.00, 80.00, 20.0, 22.8),
+    ('German Lager', 'Lager', 74.00, 79.00, 10.0, 12.8),
+    ('German Bock Lager', 'Lager', 70.00, 76.00, 8.9, 12.8),
+    ('Mexican Lager', 'Lager', 70.00, 78.00, 10.0, 12.8);
 
 CREATE TABLE style (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    yeast_name VARCHAR(255) NOT NULL,
+    style_name VARCHAR(255) NOT NULL,
     type ENUM('Lager', 'Ale')
 );
 
