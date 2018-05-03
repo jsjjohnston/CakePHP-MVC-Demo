@@ -13,6 +13,18 @@ use App\Controller\AppController;
 class UsersController extends AppController
 {
 
+    public function initialize()
+    {
+        parent::initialize();
+        $this->Auth->allow(['logout', 'add']);
+    }
+
+    public function logout()
+    {
+        $this->Flash->success('You are now logged out.');
+        return $this->redirect($this->Auth->logout());
+    }
+
     /**
      * Index method
      *
@@ -111,6 +123,7 @@ class UsersController extends AppController
           $user = $this->Auth->identify();
             if ($user) {
                 $this->Auth->setUser($user);
+                $this->Flash->success('Login Successful.');
                 return $this->redirect($this->Auth->redirectUrl());
             }
         $this->Flash->error('Your username or password is incorrect.');

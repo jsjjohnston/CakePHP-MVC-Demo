@@ -60,9 +60,16 @@ class AppController extends Controller
                     ]
                 ]
             ],
+
+            // Set where the user will end up after login
+            'loginRedirect' => [
+                'controller' => 'Recipe',
+                'action' => 'index'
+            ],
+
             'loginAction' => [
                 'controller' => 'Users',
-                'action' => 'login'
+                'action' => 'index'
             ],
              // If unauthorized, return them to page they were just on
             'unauthorizedRedirect' => $this->referer()
