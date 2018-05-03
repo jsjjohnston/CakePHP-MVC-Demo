@@ -17,23 +17,43 @@ CREATE TABLE users (
     user_name VARCHAR(255) NOT NULL,
     email VARCHAR(255) NOT NULL,
     password VARCHAR(255) NOT NULL,
-    created DATETIME,
-    modified DATETIME
+    role VARCHAR(20),
+    created DATETIME DEFAULT NULL,
+    modified DATETIME DEFAULT NULL
 );
+
+INSERT INTO users (user_name, email, password, role, created, modified)
+VALUES
+    ('Admin', 'admin@accla.com', 'qwerty321', 'Admin', NOW(), NOW()),
+    ('Tom', 'Tom@accla.com', 'qwerty321', 'Author', NOW(), NOW());
 
 CREATE TABLE hops (
     id INT AUTO_INCREMENT PRIMARY KEY,
     hop_name VARCHAR(255) NOT NULL,
     type ENUM('Pellet', 'Leaf'),
-    alpha_acid DECIMAL(2,2)
+    alpha_acid DECIMAL(4,2)
 );
+
+INSERT INTO hops (hop_name, type, alpha_acid)
+VALUES
+    ('Cascade', 'Pellet', 8.40),
+    ('Galaxy', 'Pellet', 16.50),
+    ('Pride of Ringwood', 'Leaf', 9.10),
+    ('Vic Secret', 'Pellet', 15.50);
 
 CREATE TABLE malt (
     id INT AUTO_INCREMENT PRIMARY KEY,
     malt_name VARCHAR(255) NOT NULL,
     type ENUM('Grain', 'Extract'),
-    specific_gravity DECIMAL(4,2)
+    specific_gravity DECIMAL(4,3)
 );
+
+INSERT INTO malt (malt_name, type, specific_gravity)
+VALUES
+    ('Pale', 'Grain', 1.038),
+    ('Vienna', 'Grain', 1.037),
+    ('Pilser', 'Extract', 1.037),
+    ('Munich', 'Grain', 1.038);
 
 CREATE TABLE yeast (
     id INT AUTO_INCREMENT PRIMARY KEY,
@@ -90,4 +110,6 @@ CREATE TABLE recipe_style(
     FOREIGN KEY recipe_key(style_id) REFERENCES recipe(id),
     FOREIGN KEY style_key(style_id) REFERENCES style(id)
 );
+
+
 
