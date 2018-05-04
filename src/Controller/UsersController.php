@@ -64,12 +64,20 @@ class UsersController extends AppController
      */
     public function add()
     {
+        $currentUser = $this->Auth->user();
+        
+        // Check if user already signed up to make sure they dont access the signups directly
+        if($currentUser && $currentUser['role'] == 'Author')
+        {
+            $this->Flash->error(__('Already signed up'));
+            $this->redirect($this->referer());
+        }
+
         $user = $this->Users->newEntity();
         if ($this->request->is('post')) {
             $user = $this->Users->patchEntity($user, $this->request->getData());
-            $currentUser = $this->Auth->user();
             
-            if(!$currentUser && $currentUser->role != "Admin")
+            if(!$currentUser && $currentUser['role'] != "Admin")
                 $user->role = 'Author';
 
             if ($this->Users->save($user)) {
