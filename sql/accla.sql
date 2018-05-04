@@ -24,8 +24,8 @@ CREATE TABLE users (
 
 INSERT INTO users (user_name, email, password, role, created, modified)
 VALUES
-    ('Admin', 'admin@accla.com', 'qwerty321', 'Admin', NOW(), NOW()),
-    ('Tom', 'Tom@accla.com', 'qwerty321', 'Author', NOW(), NOW());
+    ('Admin', 'admin@accla.com', '$2y$10$R9AGThHy2FjOzxweoVcVUuVI88m5hktj/.nSG1ljNbdXVMvJ7T1AW', 'Admin', NOW(), NOW()),
+    ('Tom', 'Tom@accla.com', '$2y$10$wQv/hsnk4qFpNas02kGf0elSPYXyU5Ec6fn18ht3YDbtNdzO3bHL6', 'Author', NOW(), NOW());
 
 CREATE TABLE hops (
     id INT AUTO_INCREMENT PRIMARY KEY,
