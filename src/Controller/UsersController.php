@@ -67,6 +67,11 @@ class UsersController extends AppController
         $user = $this->Users->newEntity();
         if ($this->request->is('post')) {
             $user = $this->Users->patchEntity($user, $this->request->getData());
+            $currentUser = $this->Auth->user();
+            
+            if(!$currentUser && $currentUser->role != "Admin")
+                $user->role = 'Author';
+
             if ($this->Users->save($user)) {
                 $this->Flash->success(__('The user has been saved.'));
 

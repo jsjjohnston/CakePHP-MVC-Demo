@@ -18,9 +18,14 @@
             echo $this->Form->control('user_name');
             echo $this->Form->control('email');
             echo $this->Form->control('password');
-            echo $this->Form->control('role', [
-                'options' => ['admin' => 'Admin', 'author' => 'Author']
-            ])
+            $session = $this->request->session();
+            $user = $session->read('Auth.User');
+            if(!empty($user) && $user['role'] == 'Admin') {
+                echo $this->Form->control('role', [
+                    'options' => ['Admin' => 'Admin', 'Author' => 'Author']
+                    ]);
+                }
+
         ?>
     </fieldset>
     <?= $this->Form->button(__('Submit')) ?>
