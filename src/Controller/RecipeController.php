@@ -117,20 +117,4 @@ class RecipeController extends AppController
 
         return $this->redirect(['action' => 'index']);
     }
-
-
-    /*
-        Test Function For Exerimentation
-    */
-
-    public function foobar()
-    {
-        $recipe = $this->Recipe->newEntity();
-        $users = $this->Recipe->Users->find('all');
-        $hops = $this->Recipe->Hops->find('all');
-        $this->set('hops', $hops);
-        $this->set('users', $users);
-        $this->set('recipe', $recipe);
-
-    }
 }
