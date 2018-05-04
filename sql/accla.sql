@@ -103,7 +103,7 @@ CREATE TABLE recipe_hops(
     recipe_id INT NOT NULL,
     hops_id INT NOT NULL,
     PRIMARY KEY (recipe_id,hops_id),
-    FOREIGN KEY recipe_key(hops_id) REFERENCES recipe(id),
+    FOREIGN KEY recipe_key(recipe_id) REFERENCES recipe(id),
     FOREIGN KEY hops_key(hops_id) REFERENCES hops(id)
 );
 
@@ -111,7 +111,7 @@ CREATE TABLE recipe_malt(
     recipe_id INT NOT NULL,
     malt_id INT NOT NULL,
     PRIMARY KEY (recipe_id,malt_id),
-    FOREIGN KEY recipe_key(malt_id) REFERENCES recipe(id),
+    FOREIGN KEY recipe_key(recipe_id) REFERENCES recipe(id),
     FOREIGN KEY hops_key(malt_id) REFERENCES malt(id)
 );
 
@@ -119,7 +119,7 @@ CREATE TABLE recipe_style(
     recipe_id INT NOT NULL,
     style_id INT NOT NULL,
     PRIMARY KEY (recipe_id,style_id),
-    FOREIGN KEY recipe_key(style_id) REFERENCES recipe(id),
+    FOREIGN KEY recipe_key(recipe_id) REFERENCES recipe(id),
     FOREIGN KEY style_key(style_id) REFERENCES style(id)
 );
 
