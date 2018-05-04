@@ -33,7 +33,6 @@
         <?php
             echo $this->Form->control('recipe_name');
             echo $this->Form->control('batch_size');
-            echo $this->Form->control('user_id', ['options' => $users]);
             echo $this->Form->control('hops._ids', ['options' => $hops]);
             echo $this->Form->control('malt._ids', ['options' => $malt]);
             echo $this->Form->control('style._ids', ['options' => $style]);
