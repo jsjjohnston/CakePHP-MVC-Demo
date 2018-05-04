@@ -67,12 +67,13 @@ class AppController extends Controller
                 'controller' => 'Recipe',
                 'action' => 'index'
             ],
-
-            'loginAction' => [
-                'controller' => 'Users',
-                'action' => 'index'
+           
+             // Set where the user will end up after logout
+            'logoutRedirect' => [
+                'controller' => 'users', 
+                'action' => 'login'
             ],
-            
+
              // If unauthorized, return them to page they were just on
             'unauthorizedRedirect' => $this->referer()
         ]);

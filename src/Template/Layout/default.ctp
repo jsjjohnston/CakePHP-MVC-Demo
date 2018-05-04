@@ -42,7 +42,15 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
         </ul>
         <div class="top-bar-section">
             <ul class="right">
-                
+                <li>
+                    <?php 
+                        $session = $this->request->session();
+                        $user = $session->read('Auth.User');
+                        if(!empty($user)) {
+                            echo 'Hi ', $user['user_name'];
+                        }
+                    ?>
+                </li>
                 <li>
                     <?php echo $this->Html->link(
                         'Logout', [
