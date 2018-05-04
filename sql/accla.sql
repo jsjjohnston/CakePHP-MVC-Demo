@@ -101,10 +101,10 @@ CREATE TABLE recipe_yeast(
 
 CREATE TABLE recipe_hops(
     recipe_id INT NOT NULL,
-    hops_id INT NOT NULL,
-    PRIMARY KEY (recipe_id,hops_id),
+    hop_id INT NOT NULL,
+    PRIMARY KEY (recipe_id,hop_id),
     FOREIGN KEY recipe_key(recipe_id) REFERENCES recipe(id),
-    FOREIGN KEY hops_key(hops_id) REFERENCES hops(id)
+    FOREIGN KEY hop_key(hop_id) REFERENCES hops(id)
 );
 
 CREATE TABLE recipe_malt(

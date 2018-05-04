@@ -54,6 +54,8 @@ class RecipeController extends AppController
         $recipe = $this->Recipe->newEntity();
         if ($this->request->is('post')) {
             $recipe = $this->Recipe->patchEntity($recipe, $this->request->getData());
+
+            $recipe->user_id = $this->Auth->user('id');
             if ($this->Recipe->save($recipe)) {
                 $this->Flash->success(__('The recipe has been saved.'));
 
