@@ -104,4 +104,9 @@ class RecipeTable extends Table
 
         return $rules;
     }
+
+    public function isOwnedBy($recipeId, $userId)
+{
+    return $this->exists(['id' => $recipeId, 'user_id' => $userId]);
+}
 }

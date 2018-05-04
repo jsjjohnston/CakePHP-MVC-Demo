@@ -119,4 +119,23 @@ class RecipeController extends AppController
 
         return $this->redirect(['action' => 'index']);
     }
+
+    public function isAuthorized($user)
+    {
+        if ($this->request->getParam('action') === 'add') {
+            return true;
+        }
+
+        // The owner of an article can edit and delete it
+        // Prior to 3.4.0 $this->request->param('action') was used.
+        if (in_array($this->request->getParam('action'), ['edit', 'delete'])) {
+            // Prior to 3.4.0 $this->request->params('pass.0')
+            $recipeId = (int)$this->request->getParam('pass.0');
+            if ($this->Recipe->isOwnedBy($recipeId, $user['id'])) {
+                return true;
+            }
+        }
+
+    return parent::isAuthorized($user);
+    }
 }
