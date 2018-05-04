@@ -103,14 +103,14 @@
         <table cellpadding="0" cellspacing="0">
             <tr>
                 <th scope="col"><?= __('Id') ?></th>
-                <th scope="col"><?= __('Yeast Name') ?></th>
+                <th scope="col"><?= __('Style Name') ?></th>
                 <th scope="col"><?= __('Type') ?></th>
                 <th scope="col" class="actions"><?= __('Actions') ?></th>
             </tr>
             <?php foreach ($recipe->style as $style): ?>
             <tr>
                 <td><?= h($style->id) ?></td>
-                <td><?= h($style->yeast_name) ?></td>
+                <td><?= h($style->style_name) ?></td>
                 <td><?= h($style->type) ?></td>
                 <td class="actions">
                     <?= $this->Html->link(__('View'), ['controller' => 'Style', 'action' => 'view', $style->id]) ?>

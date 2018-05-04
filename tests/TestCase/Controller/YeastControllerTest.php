@@ -18,13 +18,6 @@ class YeastControllerTest extends IntegrationTestCase
     public $fixtures = [
         'app.yeast',
         'app.recipe',
-        'app.users',
-        'app.hops',
-        'app.recipe_hops',
-        'app.malt',
-        'app.recipe_malt',
-        'app.style',
-        'app.recipe_style',
         'app.recipe_yeast'
     ];
 

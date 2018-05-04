@@ -18,7 +18,7 @@
         <thead>
             <tr>
                 <th scope="col"><?= $this->Paginator->sort('id') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('yeast_name') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('style_name') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('type') ?></th>
                 <th scope="col" class="actions"><?= __('Actions') ?></th>
             </tr>
@@ -27,7 +27,7 @@
             <?php foreach ($style as $style): ?>
             <tr>
                 <td><?= $this->Number->format($style->id) ?></td>
-                <td><?= h($style->yeast_name) ?></td>
+                <td><?= h($style->style_name) ?></td>
                 <td><?= h($style->type) ?></td>
                 <td class="actions">
                     <?= $this->Html->link(__('View'), ['action' => 'view', $style->id]) ?>

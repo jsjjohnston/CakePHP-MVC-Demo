@@ -19,8 +19,8 @@
     <h3><?= h($style->id) ?></h3>
     <table class="vertical-table">
         <tr>
-            <th scope="row"><?= __('Yeast Name') ?></th>
-            <td><?= h($style->yeast_name) ?></td>
+            <th scope="row"><?= __('Style Name') ?></th>
+            <td><?= h($style->style_name) ?></td>
         </tr>
         <tr>
             <th scope="row"><?= __('Type') ?></th>

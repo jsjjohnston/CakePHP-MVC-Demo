@@ -26,14 +26,7 @@ class HopsTableTest extends TestCase
     public $fixtures = [
         'app.hops',
         'app.recipe',
-        'app.users',
-        'app.recipe_hops',
-        'app.malt',
-        'app.recipe_malt',
-        'app.style',
-        'app.recipe_style',
-        'app.yeast',
-        'app.recipe_yeast'
+        'app.recipe_hops'
     ];
 
     /**

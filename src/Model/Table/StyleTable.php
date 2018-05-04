@@ -56,10 +56,10 @@ class StyleTable extends Table
             ->allowEmpty('id', 'create');
 
         $validator
-            ->scalar('yeast_name')
-            ->maxLength('yeast_name', 255)
-            ->requirePresence('yeast_name', 'create')
-            ->notEmpty('yeast_name');
+            ->scalar('style_name')
+            ->maxLength('style_name', 255)
+            ->requirePresence('style_name', 'create')
+            ->notEmpty('style_name');
 
         $validator
             ->scalar('type')

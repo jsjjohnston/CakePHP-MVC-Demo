@@ -26,14 +26,7 @@ class StyleTableTest extends TestCase
     public $fixtures = [
         'app.style',
         'app.recipe',
-        'app.users',
-        'app.hops',
-        'app.recipe_hops',
-        'app.malt',
-        'app.recipe_malt',
-        'app.recipe_style',
-        'app.yeast',
-        'app.recipe_yeast'
+        'app.recipe_style'
     ];
 
     /**

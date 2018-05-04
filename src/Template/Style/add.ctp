@@ -17,7 +17,7 @@
     <fieldset>
         <legend><?= __('Add Style') ?></legend>
         <?php
-            echo $this->Form->control('yeast_name');
+            echo $this->Form->control('style_name');
             echo $this->Form->control('type');
             echo $this->Form->control('recipe._ids', ['options' => $recipe]);
         ?>

@@ -7,7 +7,7 @@ use Cake\ORM\Entity;
  * Style Entity
  *
  * @property int $id
- * @property string $yeast_name
+ * @property string $style_name
  * @property string $type
  *
  * @property \App\Model\Entity\Recipe[] $recipe
@@ -25,7 +25,7 @@ class Style extends Entity
      * @var array
      */
     protected $_accessible = [
-        'yeast_name' => true,
+        'style_name' => true,
         'type' => true,
         'recipe' => true
     ];

@@ -112,7 +112,7 @@ CREATE TABLE recipe_malt(
     malt_id INT NOT NULL,
     PRIMARY KEY (recipe_id,malt_id),
     FOREIGN KEY recipe_key(recipe_id) REFERENCES recipe(id),
-    FOREIGN KEY hops_key(malt_id) REFERENCES malt(id)
+    FOREIGN KEY malt_key(malt_id) REFERENCES malt(id)
 );
 
 CREATE TABLE recipe_style(

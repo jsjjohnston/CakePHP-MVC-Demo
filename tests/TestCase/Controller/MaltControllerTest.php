@@ -18,14 +18,7 @@ class MaltControllerTest extends IntegrationTestCase
     public $fixtures = [
         'app.malt',
         'app.recipe',
-        'app.users',
-        'app.hops',
-        'app.recipe_hops',
-        'app.recipe_malt',
-        'app.style',
-        'app.recipe_style',
-        'app.yeast',
-        'app.recipe_yeast'
+        'app.recipe_malt'
     ];
 
     /**
