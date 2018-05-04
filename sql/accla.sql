@@ -12,6 +12,9 @@ USE accla;
     A simple users system to begin with
 */
 
+/*
+    Test
+*/
 CREATE TABLE users (
     id INT AUTO_INCREMENT PRIMARY KEY,
     user_name VARCHAR(255) NOT NULL,
