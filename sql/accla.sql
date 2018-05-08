@@ -83,13 +83,18 @@ CREATE TABLE style (
     type ENUM('Lager', 'Ale')
 );
 
+INSERT INTO style (style_name, type)
+VALUES
+    ("Pale Ale", "Ale");
+
 CREATE TABLE recipe (
     id INT AUTO_INCREMENT PRIMARY KEY,
     recipe_name VARCHAR(255) NOT NULL,
-    batch_size DECIMAL(2,1),
+    batch_size DECIMAL(5,1),
     user_id INT NOT NULL,
     FOREIGN KEY user_key(user_id) REFERENCES users(id)
 );
+
 
 CREATE TABLE recipe_yeast(
     recipe_id INT NOT NULL,
@@ -99,6 +104,7 @@ CREATE TABLE recipe_yeast(
     FOREIGN KEY yeast_key(yeast_id) REFERENCES yeast(id)
 );
 
+
 CREATE TABLE recipe_hops(
     recipe_id INT NOT NULL,
     hop_id INT NOT NULL,
@@ -106,6 +112,7 @@ CREATE TABLE recipe_hops(
     FOREIGN KEY recipe_key(recipe_id) REFERENCES recipe(id),
     FOREIGN KEY hop_key(hop_id) REFERENCES hops(id)
 );
+
 
 CREATE TABLE recipe_malt(
     recipe_id INT NOT NULL,
@@ -115,6 +122,7 @@ CREATE TABLE recipe_malt(
     FOREIGN KEY malt_key(malt_id) REFERENCES malt(id)
 );
 
+
 CREATE TABLE recipe_style(
     recipe_id INT NOT NULL,
     style_id INT NOT NULL,
@@ -123,5 +131,29 @@ CREATE TABLE recipe_style(
     FOREIGN KEY style_key(style_id) REFERENCES style(id)
 );
 
+/*
+    Test Recipe
+*/
+INSERT INTO recipe (recipe_name, batch_size, user_id)
+VALUES
+    ('Test', 19, 1);
+
+INSERT INTO recipe_style (recipe_id, style_id)
+VALUES
+    (1,1);
+
+INSERT INTO recipe_malt (recipe_id, malt_id)
+VALUES
+    (1,1),
+    (1,3);
+
+INSERT INTO recipe_hops (recipe_id, hop_id)
+VALUES
+    (1,2),
+    (1,4);
+
+INSERT INTO recipe_yeast (recipe_id, yeast_id)
+VALUES
+    (1,6);
 
 
