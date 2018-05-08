@@ -81,23 +81,12 @@ class RecipeController extends AppController
     public function edit($id = null)
     {
         $recipe = $this->Recipe->get($id, [
-            'contain' => ['Hops', 'Malt', 'Style', 'Yeast']
+            'contain' => ['Users', 'Hops', 'Malt', 'Style', 'Yeast']
         ]);
-        if ($this->request->is(['patch', 'post', 'put'])) {
-            $recipe = $this->Recipe->patchEntity($recipe, $this->request->getData());
-            if ($this->Recipe->save($recipe)) {
-                $this->Flash->success(__('The recipe has been saved.'));
 
-                return $this->redirect(['action' => 'index']);
-            }
-            $this->Flash->error(__('The recipe could not be saved. Please, try again.'));
-        }
-        $users = $this->Recipe->Users->find('list', ['limit' => 200]);
-        $hops = $this->Recipe->Hops->find('list', ['limit' => 200]);
-        $malt = $this->Recipe->Malt->find('list', ['limit' => 200]);
-        $style = $this->Recipe->Style->find('list', ['limit' => 200]);
-        $yeast = $this->Recipe->Yeast->find('list', ['limit' => 200]);
-        $this->set(compact('recipe', 'users', 'hops', 'malt', 'style', 'yeast'));
+        $style = $this->Recipe->Style->find('list', ['keyField' => 'id', 'valueField' => 'name']);
+        $yeast = $this->Recipe->Yeast->find('list', ['keyField' => 'id', 'valueField' => 'yeast_name']);
+        $this->set(compact('recipe','style', 'yeast'));
     }
 
     /**
