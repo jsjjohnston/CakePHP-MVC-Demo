@@ -58,8 +58,8 @@ class StyleController extends AppController
             }
             $this->Flash->error(__('The style could not be saved. Please, try again.'));
         }
-        $recipe = $this->Style->Recipe->find('list', ['limit' => 200]);
-        $this->set(compact('style', 'recipe'));
+        $type = $this->Style->find('list', ['limit' => 200]);
+        $this->set(compact('style', 'type'));
     }
 
     /**

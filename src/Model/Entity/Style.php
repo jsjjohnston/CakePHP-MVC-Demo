@@ -25,7 +25,7 @@ class Style extends Entity
      * @var array
      */
     protected $_accessible = [
-        'style_name' => true,
+        'name' => true,
         'type' => true,
         'recipe' => true
     ];

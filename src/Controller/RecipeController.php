@@ -115,10 +115,8 @@ class RecipeController extends AppController
             return true;
         }
 
-        // The owner of an article can edit and delete it
-        // Prior to 3.4.0 $this->request->param('action') was used.
+        // The owner of an recipe can edit and delete it
         if (in_array($this->request->getParam('action'), ['edit', 'delete'])) {
-            // Prior to 3.4.0 $this->request->params('pass.0')
             $recipeId = (int)$this->request->getParam('pass.0');
             if ($this->Recipe->isOwnedBy($recipeId, $user['id'])) {
                 return true;
