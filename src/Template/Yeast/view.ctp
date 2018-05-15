@@ -4,19 +4,8 @@
  * @var \App\Model\Entity\Yeast $yeast
  */
 ?>
-<nav class="large-3 medium-4 columns" id="actions-sidebar">
-    <ul class="side-nav">
-        <li class="heading"><?= __('Actions') ?></li>
-        <li><?= $this->Html->link(__('Edit Yeast'), ['action' => 'edit', $yeast->id]) ?> </li>
-        <li><?= $this->Form->postLink(__('Delete Yeast'), ['action' => 'delete', $yeast->id], ['confirm' => __('Are you sure you want to delete # {0}?', $yeast->id)]) ?> </li>
-        <li><?= $this->Html->link(__('List Yeast'), ['action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('New Yeast'), ['action' => 'add']) ?> </li>
-        <li><?= $this->Html->link(__('List Recipe'), ['controller' => 'Recipe', 'action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('New Recipe'), ['controller' => 'Recipe', 'action' => 'add']) ?> </li>
-    </ul>
-</nav>
 <div class="yeast view large-9 medium-8 columns content">
-    <h3><?= h($yeast->id) ?></h3>
+    <h3><?= h($yeast->yeast_name) ?></h3>
     <table class="vertical-table">
         <tr>
             <th scope="row"><?= __('Yeast Name') ?></th>
@@ -48,7 +37,7 @@
         </tr>
     </table>
     <div class="related">
-        <h4><?= __('Related Recipe') ?></h4>
+        <h4><?= __('Related Recipes') ?></h4>
         <?php if (!empty($yeast->recipe)): ?>
         <table cellpadding="0" cellspacing="0">
             <tr>
