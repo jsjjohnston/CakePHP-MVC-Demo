@@ -4,20 +4,12 @@
  * @var \App\Model\Entity\Malt[]|\Cake\Collection\CollectionInterface $malt
  */
 ?>
-<nav class="large-3 medium-4 columns" id="actions-sidebar">
-    <ul class="side-nav">
-        <li class="heading"><?= __('Actions') ?></li>
-        <li><?= $this->Html->link(__('New Malt'), ['action' => 'add']) ?></li>
-        <li><?= $this->Html->link(__('List Recipe'), ['controller' => 'Recipe', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Recipe'), ['controller' => 'Recipe', 'action' => 'add']) ?></li>
-    </ul>
-</nav>
 <div class="malt index large-9 medium-8 columns content">
     <h3><?= __('Malt') ?></h3>
     <table cellpadding="0" cellspacing="0">
         <thead>
             <tr>
-                <th scope="col"><?= $this->Paginator->sort('id') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('Database id') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('malt_name') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('type') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('specific_gravity') ?></th>
@@ -32,7 +24,6 @@
                 <td><?= h($malt->type) ?></td>
                 <td><?= $this->Number->format($malt->specific_gravity) ?></td>
                 <td class="actions">
-                    <?= $this->Html->link(__('View'), ['action' => 'view', $malt->id]) ?>
                     <?= $this->Html->link(__('Edit'), ['action' => 'edit', $malt->id]) ?>
                     <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $malt->id], ['confirm' => __('Are you sure you want to delete # {0}?', $malt->id)]) ?>
                 </td>

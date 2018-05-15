@@ -84,7 +84,7 @@ class MaltController extends AppController
             $this->Flash->error(__('The malt could not be saved. Please, try again.'));
         }
         $recipe = $this->Malt->Recipe->find('list', ['limit' => 200]);
-        $this->set(compact('malt', 'recipe'));
+        $this->set(compact('malt', 'type'));
     }
 
     /**

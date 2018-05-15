@@ -11,6 +11,7 @@
             <tr>
                 <th scope="col"><?= $this->Paginator->sort('name') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('type') ?></th>
+                <th scope="col" class="actions"><?= __('Actions') ?></th>
             </tr>
         </thead>
         <tbody>
@@ -18,6 +19,10 @@
             <tr>
                 <td><?= h($style->name) ?></td>
                 <td><?= h($style->type) ?></td>
+                <td class="actions">
+                    <?= $this->Html->link(__('Edit'), ['action' => 'edit', $style->id]) ?>
+                    <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $style->id], ['confirm' => __('Are you sure you want to delete # {0}?', $style->name)]) ?>
+                </td>
             </tr>
             <?php endforeach; ?>
         </tbody>

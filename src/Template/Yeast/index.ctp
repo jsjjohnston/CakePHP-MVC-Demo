@@ -29,7 +29,7 @@
                 <td><?= $this->Number->format($yeast->temperature_max) ?></td>
                 <td class="actions">
                     <?= $this->Html->link(__('Edit'), ['action' => 'edit', $yeast->id]) ?>
-                    <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $yeast->id], ['confirm' => __('Are you sure you want to delete # {0}?', $yeast->id)]) ?>
+                    <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $yeast->id], ['confirm' => __('Are you sure you want to delete {0}?', $yeast->yeast_name)]) ?>
                 </td>
             </tr>
             <?php endforeach; ?>

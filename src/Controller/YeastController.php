@@ -58,7 +58,6 @@ class YeastController extends AppController
             }
             $this->Flash->error(__('The yeast could not be saved. Please, try again.'));
         }
-        $recipe = $this->Yeast->Recipe->find('list', ['limit' => 200]);
         $this->set(compact('yeast', 'recipe'));
     }
 
@@ -83,7 +82,6 @@ class YeastController extends AppController
             }
             $this->Flash->error(__('The yeast could not be saved. Please, try again.'));
         }
-        $recipe = $this->Yeast->Recipe->find('list', ['limit' => 200]);
         $this->set(compact('yeast', 'recipe'));
     }
 

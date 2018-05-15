@@ -5,9 +5,10 @@
  */
 ?>
 <div class="users form large-9 medium-8 columns content">
+    <h3><?= h('Add User') ?></h3>
     <?= $this->Form->create($user) ?>
     <fieldset>
-        <legend><?= __('Add User') ?></legend>
+        <legend><?= __('New User') ?></legend>
         <?php
             echo $this->Form->control('user_name');
             echo $this->Form->control('email');

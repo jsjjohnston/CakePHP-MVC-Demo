@@ -10,7 +10,7 @@
         <legend><?= __('Add Style') ?></legend>
         <?php
             echo $this->Form->control('style_name');
-            echo $this->Form->control('type');
+            echo $this->Form->control('type', ['options'=>['Lager'=>'Lager', 'Ale'=>'Ale']]);
         ?>
     </fieldset>
     <?= $this->Form->button(__('Submit')) ?>
