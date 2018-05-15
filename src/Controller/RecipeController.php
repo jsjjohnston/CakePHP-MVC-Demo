@@ -66,8 +66,8 @@ class RecipeController extends AppController
         $users = $this->Recipe->Users->find('list', ['limit' => 200]);
         $hops = $this->Recipe->Hops->find('list', ['limit' => 200]);
         $malt = $this->Recipe->Malt->find('list', ['limit' => 200]);
-        $style = $this->Recipe->Style->find('list', ['limit' => 200]);
-        $yeast = $this->Recipe->Yeast->find('list', ['limit' => 200]);
+        $style = $this->Recipe->Style->find('list', ['keyField' => 'id', 'valueField' => 'name']);
+        $yeast = $this->Recipe->Yeast->find('list', ['keyField' => 'id', 'valueField' => 'yeast_name']);
         $this->set(compact('recipe', 'users', 'hops', 'malt', 'style', 'yeast'));
     }
 

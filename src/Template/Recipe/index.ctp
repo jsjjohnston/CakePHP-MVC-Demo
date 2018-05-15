@@ -9,7 +9,7 @@
     <table cellpadding="0" cellspacing="0">
         <thead>
             <tr>
-                <th scope="col"><?= $this->Paginator->sort('id') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('Database id') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('recipe_name') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('batch_size') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('user_id') ?></th>
@@ -22,9 +22,8 @@
                 <td><?= $this->Number->format($recipe->id) ?></td>
                 <td><?= h($recipe->recipe_name) ?></td>
                 <td><?= $this->Number->format($recipe->batch_size) ?></td>
-                <td><?= $recipe->has('user') ? $this->Html->link($recipe->user->id, ['controller' => 'Users', 'action' => 'view', $recipe->user->id]) : '' ?></td>
+                <td><?= $recipe->has('user') ? $this->Html->link($recipe->user->user_name, ['controller' => 'Users', 'action' => 'view', $recipe->user->id]) : '' ?></td>
                 <td class="actions">
-                    <?= $this->Html->link(__('View'), ['action' => 'view', $recipe->id]) ?>
                     <?= $this->Html->link(__('Edit'), ['action' => 'edit', $recipe->id]) ?>
                     <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $recipe->id], ['confirm' => __('Are you sure you want to delete # {0}?', $recipe->id)]) ?>
                 </td>
