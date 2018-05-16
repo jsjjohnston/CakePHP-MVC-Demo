@@ -141,7 +141,13 @@ class UsersController extends AppController
             if ($user) {
                 $this->Auth->setUser($user);
                 $this->Flash->success('Login Successful.');
-                return $this->redirect($this->Auth->redirectUrl());
+                if($user['role'] === 'Admin')
+                {
+                    return $this->redirect(['controller' => 'users', 'action' => 'admin']);
+                } else
+                {
+                    return $this->redirect($this->Auth->redirectUrl());
+                }
             }
         $this->Flash->error('Your username or password is incorrect.');
         }
