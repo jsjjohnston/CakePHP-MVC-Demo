@@ -40,12 +40,13 @@
         </ul>
         <div class="top-bar-section">
             <ul class="right">
-                <li>
+                <li class="name">
                     <?php 
                         $session = $this->request->session();
                         $user = $session->read('Auth.User');
                         if(!empty($user)) {
-                            echo 'Hi ', $user['user_name'];
+                            //echo 'Hi ', $user['user_name'];
+                            echo $this->Html->link('Hi ' . $user['user_name'], ['controller'=> 'Users','action' => 'view', $user['id']]);
                         }
                     ?>
                 </li>
