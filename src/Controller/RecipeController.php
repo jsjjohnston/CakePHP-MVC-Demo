@@ -125,4 +125,15 @@ class RecipeController extends AppController
 
     return parent::isAuthorized($user);
     }
+
+    public function viewMy()
+    {
+        $this->paginate = [
+            'conditions' => ['user_id' => $this->Auth->user('id')],
+            'contain' => ['Users']
+        ];
+        $recipe = $this->paginate($this->Recipe);
+
+        $this->set(compact('recipe'));
+    }
 }

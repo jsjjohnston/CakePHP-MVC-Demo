@@ -80,7 +80,7 @@ class AppController extends Controller
 
         // Allow the display action so our PagesController
         // continues to work. Also enable the read only actions.
-        $this->Auth->allow(['display', 'view', 'login' ,'index']);
+        $this->Auth->allow(['display', 'view', 'login' ,'index', 'viewMy']);
     }
 
     public function isAuthorized($user)

@@ -70,7 +70,7 @@
     <ul class="side-nav">
         <li class="heading"><?= __('Actions') ?></li>
         <li><?= $this->Html->link(__('New Recipe'), ['controller' => 'Recipe', 'action' => 'add']) ?></li>
-        <li><?= $this->Html->link(__('View My Recipes'), ['controller' => 'Users', 'action' => 'index']) ?></li>
+        <li><?= $this->Html->link(__('View My Recipes'), ['controller' => 'Recipe', 'action' => 'viewMy']) ?></li>
         <li><?= $this->Html->link(__('View All Recipes'), ['controller' => 'Recipe', 'action' => 'index']) ?></li>
 
         <?php
