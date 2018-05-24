@@ -84,13 +84,13 @@ class AppController extends Controller
     }
 
     public function isAuthorized($user)
-{
-    // Admin can access every action
-    if (isset($user['role']) && $user['role'] === 'Admin') {
-        return true;
-    }
+    {
+        // Admin can access every action
+        if (isset($user['role']) && $user['role'] === 'Admin') {
+            return true;
+        }
 
-    // Default deny
-    return false;
-}
+        // Default deny
+        return false;
+    }
 }
