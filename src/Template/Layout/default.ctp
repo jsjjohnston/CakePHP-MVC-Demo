@@ -56,12 +56,33 @@
                         $user = $session->read('Auth.User');
                         if(!empty($user)) {
                             echo $this->Html->link('Logout', ['controller'=> 'Users','action' => 'logout']);
+                        }
+                        else
+                        {
+                            echo $this->Html->link('Login', ['controller'=> 'Users','action' => 'login']);
                         }    
                         ?>
                 </li>
             </ul>
         </div>
     </nav>
+    <nav class="large-3 medium-4 columns" id="actions-sidebar">
+    <ul class="side-nav">
+        <li class="heading"><?= __('Actions') ?></li>
+        <li><?= $this->Html->link(__('New Recipe'), ['controller' => 'Recipe', 'action' => 'add']) ?></li>
+        <li><?= $this->Html->link(__('View My Recipes'), ['controller' => 'Users', 'action' => 'index']) ?></li>
+        <li><?= $this->Html->link(__('View All Recipes'), ['controller' => 'Recipe', 'action' => 'index']) ?></li>
+
+        <?php
+            $user = $session->read('Auth.User');
+            if(!empty($user) && $user['role'] == 'Admin' ) {
+               echo '<li>'; 
+               echo $this->Html->link(__('View Admin Page'), ['controller' => 'Users', 'action' => 'admin']) ;
+               echo '</li>';
+            }
+        ?>
+    </ul>
+</nav>
     <?= $this->Flash->render() ?>
     <div class="container clearfix">
         <?= $this->fetch('content') ?>
