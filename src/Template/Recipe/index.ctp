@@ -12,6 +12,14 @@
                 <th scope="col"><?= $this->Paginator->sort('recipe_name') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('user_id') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('batch_size') ?></th>
+                
+                <?php
+                    if(!empty($user) && $user['role'] == 'Admin' ) {
+                        echo '<th scope="col" class="actions">';
+                        echo 'Actions';
+                        echo '</th>';
+                    }
+                ?>
             </tr>
         </thead>
         <tbody>
@@ -20,6 +28,11 @@
                 <td><?= $recipe->has('recipe_name') ? $this->Html->link($recipe->recipe_name, ['controller' => 'Recipe', 'action' => 'view', $recipe->id]) : '' ?></td>
                 <td><?= $recipe->has('user') ? $this->Html->link($recipe->user->user_name, ['controller' => 'Users', 'action' => 'view', $recipe->user->id]) : '' ?></td>
                 <td><?= $this->Number->format($recipe->batch_size) ?></td>
+                
+                <?= !empty($user) && $user['role'] == 'Admin' ? '<td class="actions">' : '' ?>
+                    <?= !empty($user) && $user['role'] == 'Admin' ? $this->Html->link(__('Edit'), ['action' => 'edit', $recipe->id]) : '' ?>
+                    <?= !empty($user) && $user['role'] == 'Admin' ? $this->Form->postLink(__('Delete'), ['action' => 'delete', $recipe->id], ['confirm' => __('Are you sure you want to delete # {0}?', $recipe->id)]) : '' ?>
+                <?= !empty($user) && $user['role'] == 'Admin' ? '</td>' : '' ?>
             </tr>
             <?php endforeach; ?>
         </tbody>

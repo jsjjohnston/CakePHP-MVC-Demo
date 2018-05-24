@@ -25,7 +25,8 @@ class RecipeController extends AppController
         ];
         $recipe = $this->paginate($this->Recipe);
 
-        $this->set(compact('recipe'));
+        $user = $this->Auth->user();
+        $this->set(compact('recipe', 'user'));
     }
 
     /**
