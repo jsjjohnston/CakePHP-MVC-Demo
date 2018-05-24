@@ -28,6 +28,7 @@ CREATE TABLE users (
 INSERT INTO users (user_name, email, password, role, created, modified)
 VALUES
     ('Admin', 'admin@accla.com', '$2y$10$R9AGThHy2FjOzxweoVcVUuVI88m5hktj/.nSG1ljNbdXVMvJ7T1AW', 'Admin', NOW(), NOW()),
+    ('Jack', 'Jack@accla.com', '$2y$10$SHV/jKrsni6Tyy2Ll2IrJOdAOZAKrbMGAtbrF7kh/Yx1YK.XPAVom', 'Author', NOW(), NOW()),
     ('Tom', 'Tom@accla.com', '$2y$10$wQv/hsnk4qFpNas02kGf0elSPYXyU5Ec6fn18ht3YDbtNdzO3bHL6', 'Author', NOW(), NOW());
 
 CREATE TABLE hops (
@@ -85,7 +86,8 @@ CREATE TABLE style (
 
 INSERT INTO style (style_name, type)
 VALUES
-    ("Pale Ale", "Ale");
+    ("Pale Ale", "Ale"),
+    ("Extra Pale", "Lager");;
 
 CREATE TABLE recipe (
     id INT AUTO_INCREMENT PRIMARY KEY,
@@ -132,11 +134,11 @@ CREATE TABLE recipe_style(
 );
 
 /*
-    Test Recipe
+    Jacks Super Awesome Ale Recipe
 */
 INSERT INTO recipe (recipe_name, batch_size, user_id)
 VALUES
-    ('Test', 19, 1);
+    ('Jacks Super Awesome Ale', 19, 2);
 
 INSERT INTO recipe_style (recipe_id, style_id)
 VALUES
@@ -155,5 +157,30 @@ VALUES
 INSERT INTO recipe_yeast (recipe_id, yeast_id)
 VALUES
     (1,6);
+
+/*
+    Toms extra Pale Lager Recipe
+*/
+INSERT INTO recipe (recipe_name, batch_size, user_id)
+VALUES
+    ('Toms extra Pale Lager', 19, 3);
+
+INSERT INTO recipe_style (recipe_id, style_id)
+VALUES
+    (2,2);
+
+INSERT INTO recipe_malt (recipe_id, malt_id)
+VALUES
+    (2,1),
+    (2,3);
+
+INSERT INTO recipe_hops (recipe_id, hop_id)
+VALUES
+    (2,2),
+    (2,4);
+
+INSERT INTO recipe_yeast (recipe_id, yeast_id)
+VALUES
+    (2,5);
 
 
