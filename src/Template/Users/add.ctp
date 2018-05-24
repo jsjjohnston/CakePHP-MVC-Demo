@@ -5,7 +5,7 @@
  */
 ?>
 <div class="users form large-9 medium-8 columns content">
-    <h3><?= h('Add User') ?></h3>
+    <h3><?= h('Create User') ?></h3>
     <?= $this->Form->create($user) ?>
     <fieldset>
         <legend><?= __('New User') ?></legend>
