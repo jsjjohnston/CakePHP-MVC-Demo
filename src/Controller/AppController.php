@@ -65,7 +65,7 @@ class AppController extends Controller
             // Set where the user will end up after login
             'loginRedirect' => [
                 'controller' => 'Recipe',
-                'action' => 'index'
+                'action' => 'viewMy'
             ],
            
              // Set where the user will end up after logout
