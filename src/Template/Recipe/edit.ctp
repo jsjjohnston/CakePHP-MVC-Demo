@@ -11,8 +11,11 @@
         <?php
             echo $this->Form->control('recipe_name');
             echo $this->Form->control('batch_size');
-            echo $this->Form->select('style._ids', $style);
-            
+            ?>
+        
+        <h4><?= __('Style') ?></h4>
+        <?php
+            echo $this->Form->select('style._ids', $style);    
         ?>
         <div class="related">
         <h4><?= __('Malt') ?></h4>
