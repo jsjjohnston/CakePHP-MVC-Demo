@@ -26,6 +26,7 @@
 
     <?= $this->Html->css('base.css') ?>
     <?= $this->Html->css('cake.css') ?>
+    <?= $this->Html->script('jquery.min.js') ?>
 
     <?= $this->fetch('meta') ?>
     <?= $this->fetch('css') ?>
@@ -69,8 +70,8 @@
     <nav class="large-3 medium-4 columns" id="actions-sidebar">
     <ul class="side-nav">
         <li class="heading"><?= __('Actions') ?></li>
-        <li><?= $this->Html->link(__('New Recipe'), ['controller' => 'Recipe', 'action' => 'add']) ?></li>
-        <li><?= $this->Html->link(__('View My Recipes'), ['controller' => 'Recipe', 'action' => 'viewMy']) ?></li>
+        <li><?= !empty($session->read('Auth.User')) ? $this->Html->link(__('New Recipe'), ['controller' => 'Recipe', 'action' => 'add']) : '' ?></li>
+        <li><?= !empty($session->read('Auth.User')) ? $this->Html->link(__('View My Recipes'), ['controller' => 'Recipe', 'action' => 'viewMy']) : ''?></li>
         <li><?= $this->Html->link(__('View All Recipes'), ['controller' => 'Recipe', 'action' => 'index']) ?></li>
 
         <?php

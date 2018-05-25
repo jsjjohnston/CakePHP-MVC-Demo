@@ -57,7 +57,8 @@ VALUES
     ('Pale', 'Grain', 1.038),
     ('Vienna', 'Grain', 1.037),
     ('Pilser', 'Extract', 1.037),
-    ('Munich', 'Grain', 1.038);
+    ('Munich', 'Grain', 1.038),
+    ('Super fancy 1', 'Grain', 1.038);
 
 CREATE TABLE yeast (
     id INT AUTO_INCREMENT PRIMARY KEY,

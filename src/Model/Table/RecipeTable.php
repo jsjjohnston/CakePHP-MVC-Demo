@@ -49,6 +49,15 @@ class RecipeTable extends Table
             'targetForeignKey' => 'hop_id',
             'joinTable' => 'recipe_hops'
         ]);
+
+        //$this->hasMany('Hops', [
+        //    'foreignKey' => 'recipe_id'
+        //]);
+
+        //$this->hasMany('Malt', [
+        //    'foreignKey' => 'recipe_id'
+        //]);
+
         $this->belongsToMany('Malt', [
             'foreignKey' => 'recipe_id',
             'targetForeignKey' => 'malt_id',

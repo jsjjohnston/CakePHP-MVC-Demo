@@ -60,13 +60,16 @@ class RecipeController extends AppController
             if ($this->Recipe->save($recipe)) {
                 $this->Flash->success(__('The recipe has been saved.'));
 
-                return $this->redirect(['action' => 'index']);
+                //return $this->redirect(['action' => 'index']);
             }
-            $this->Flash->error(__('The recipe could not be saved. Please, try again.'));
+            else
+            {
+                $this->Flash->error(__('The recipe could not be saved. Please, try again.'));
+            }
         }
         $users = $this->Recipe->Users->find('list', ['limit' => 200]);
-        $hops = $this->Recipe->Hops->find('list', ['limit' => 200]);
-        $malt = $this->Recipe->Malt->find('list', ['limit' => 200]);
+        $hops = $this->Recipe->Hops->find('list', ['keyField' => 'id', 'valueField' => 'hop_name']);
+        $malt = $this->Recipe->Malt->find('list', ['keyField' => 'id', 'valueField' => 'malt_name']);
         $style = $this->Recipe->Style->find('list', ['keyField' => 'id', 'valueField' => 'style_name']);
         $yeast = $this->Recipe->Yeast->find('list', ['keyField' => 'id', 'valueField' => 'yeast_name']);
         $this->set(compact('recipe', 'users', 'hops', 'malt', 'style', 'yeast'));
@@ -85,9 +88,11 @@ class RecipeController extends AppController
             'contain' => ['Users', 'Hops', 'Malt', 'Style', 'Yeast']
         ]);
 
+        $hops = $this->Recipe->Hops->find('list', ['keyField' => 'id', 'valueField' => 'hop_name']);
+        $malt = $this->Recipe->Malt->find('list', ['keyField' => 'id', 'valueField' => 'malt_name']);
         $style = $this->Recipe->Style->find('list', ['keyField' => 'id', 'valueField' => 'style_name']);
         $yeast = $this->Recipe->Yeast->find('list', ['keyField' => 'id', 'valueField' => 'yeast_name']);
-        $this->set(compact('recipe','style', 'yeast'));
+        $this->set(compact('recipe','hops', 'malt','style', 'yeast'));
     }
 
     /**
@@ -124,7 +129,7 @@ class RecipeController extends AppController
             }
         }
 
-    return parent::isAuthorized($user);
+        return parent::isAuthorized($user);
     }
 
     public function viewMy()

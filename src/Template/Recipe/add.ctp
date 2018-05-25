@@ -4,6 +4,20 @@
  * @var \App\Model\Entity\Recipe $recipe
  */
 ?>
+<script>
+    function addMalt() {
+        console.log("Add Malt");
+        var txt2 = "<?=$this->Form->select('malt._ids', $malt)?>";  // Create text with jQuery
+        $("#malt").append(txt2);
+    }
+
+    function addHops() {
+        console.log("Add Hops");
+        var txt2 = $("<h3></h3>").text("Sexty.");  // Create text with jQuery
+        $("#hops").append(txt2);
+    }
+</script>
+
 <div class="users form large-9 medium-8 columns content">
     <h3><?= h('Add a recipe') ?></h3>
     <?= $this->Form->create($recipe) ?>
@@ -16,47 +30,51 @@
 
             ?>
             <div class="related">
-            <h4><?= __('Malt') ?></h4>
-            <?php if (!empty($recipe->malt)): ?>
+            <h4 id='malt'><?= __('Malt') ?></h4>
             <table cellpadding="0" cellspacing="0">
                 <tr>
                     <th scope="col"><?= __('Malt Name') ?></th>
-                    <th scope="col"><?= __('Type') ?></th>
-                    <th scope="col"><?= __('Specific Gravity') ?></th>
                 </tr>
-                <?php foreach ($recipe->malt as $malt): ?>
                 <tr>
-                    <td><?= h($malt->malt_name) ?></td>
-                    <td><?= h($malt->type) ?></td>
-                    <td><?= h($malt->specific_gravity) ?></td>
+                    <td><?= $this->Form->select('malt.0.id', $malt,  ['empty' => '--NONE--']) ?></td> 
                 </tr>
-                <?php endforeach; ?>
+                <tr>
+                    <td><?= $this->Form->select('malt.1.id', $malt,  ['empty' => '--NONE--']) ?></td> 
+                </tr>
+                <tr>
+                    <td><?= $this->Form->select('malt.2.id', $malt,  ['empty' => '--NONE--']) ?></td> 
+                </tr>
+                <tr>
+                    <td><?= $this->Form->select('malt.3.id', $malt,  ['empty' => '--NONE--']) ?></td> 
+                </tr>
+                <tr>
+                    <td><?= $this->Form->select('malt.4.id', $malt,  ['empty' => '--NONE--']) ?></td> 
+                </tr>
             </table>
-            <?php endif; ?>
-            <br>
-            <?php echo $this->Form->button('Add Malt'); ?>
             </div>
 
             <div class="related">
-            <h4><?= __('Hops') ?></h4>
-            <?php if (!empty($recipe->hops)): ?>
+            <h4 id='hops'><?= __('Hops') ?></h4>
             <table cellpadding="0" cellspacing="0">
                 <tr>
                     <th scope="col"><?= __('Hop Name') ?></th>
-                    <th scope="col"><?= __('Type') ?></th>
-                    <th scope="col"><?= __('Alpha Acid') ?></th>
                 </tr>
-                <?php foreach ($recipe->hops as $hops): ?>
                 <tr>
-                    <td><?= h($hops->hop_name) ?></td>
-                    <td><?= h($hops->type) ?></td>
-                    <td><?= h($hops->alpha_acid) ?></td>
-                 </tr>
-                <?php endforeach; ?>
+                    <td><?= $this->Form->select('hops.0.id', $hops,  ['empty' => '--NONE--']) ?></td> 
+                </tr>
+                <tr>
+                    <td><?= $this->Form->select('hops.1.id', $hops,  ['empty' => '--NONE--']) ?></td> 
+                </tr>
+                <tr>
+                    <td><?= $this->Form->select('hops.2.id', $hops,  ['empty' => '--NONE--']) ?></td> 
+                </tr>
+                <tr>
+                    <td><?= $this->Form->select('hops.3.id', $hops,  ['empty' => '--NONE--']) ?></td> 
+                </tr>
+                <tr>
+                    <td><?= $this->Form->select('hops.4.id', $hops,  ['empty' => '--NONE--']) ?></td> 
+                </tr>
             </table>
-            <?php endif; ?>
-            <br>
-            <?php echo $this->Form->button('Add Hops'); ?>
         </div>
         <div class="related">
             <h4><?= __('Yeast') ?></h4>
