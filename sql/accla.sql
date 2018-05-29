@@ -4,16 +4,12 @@
     Created: 15-03-2018
 */
 
-DROP DATABASE accla;
-CREATE DATABASE accla;
+DROP DATABASE IF EXISTS accla;
+CREATE DATABASE IF NOT EXISTS accla;
 USE accla;
 
 /*
     A simple users system to begin with
-*/
-
-/*
-    Test again
 */
 CREATE TABLE users (
     id INT AUTO_INCREMENT PRIMARY KEY,
@@ -25,12 +21,24 @@ CREATE TABLE users (
     modified DATETIME DEFAULT NULL
 );
 
+/*
+    Create Users For Test Case
+
+    Email               Password    Level   Name    
+    Admin@accla.com     admin       Admin   Admin       
+    jack@accla.com      jack        Author  Jack        
+    tom@accla.com       tom         Author  Tom         
+
+*/
 INSERT INTO users (user_name, email, password, role, created, modified)
 VALUES
     ('Admin', 'admin@accla.com', '$2y$10$R9AGThHy2FjOzxweoVcVUuVI88m5hktj/.nSG1ljNbdXVMvJ7T1AW', 'Admin', NOW(), NOW()),
     ('Jack', 'Jack@accla.com', '$2y$10$SHV/jKrsni6Tyy2Ll2IrJOdAOZAKrbMGAtbrF7kh/Yx1YK.XPAVom', 'Author', NOW(), NOW()),
     ('Tom', 'Tom@accla.com', '$2y$10$wQv/hsnk4qFpNas02kGf0elSPYXyU5Ec6fn18ht3YDbtNdzO3bHL6', 'Author', NOW(), NOW());
 
+/*
+    Create Hops Table
+*/
 CREATE TABLE hops (
     id INT AUTO_INCREMENT PRIMARY KEY,
     hop_name VARCHAR(255) NOT NULL,
@@ -38,6 +46,9 @@ CREATE TABLE hops (
     alpha_acid DECIMAL(4,2)
 );
 
+/*
+    Insert Sample Hops
+*/
 INSERT INTO hops (hop_name, type, alpha_acid)
 VALUES
     ('Cascade', 'Pellet', 8.40),
@@ -45,6 +56,9 @@ VALUES
     ('Pride of Ringwood', 'Leaf', 9.10),
     ('Vic Secret', 'Pellet', 15.50);
 
+/*
+    Create Hops Table
+*/
 CREATE TABLE malt (
     id INT AUTO_INCREMENT PRIMARY KEY,
     malt_name VARCHAR(255) NOT NULL,
@@ -52,6 +66,9 @@ CREATE TABLE malt (
     specific_gravity DECIMAL(4,3)
 );
 
+/*
+    Insert Sample Malt
+*/
 INSERT INTO malt (malt_name, type, specific_gravity)
 VALUES
     ('Pale', 'Grain', 1.038),
@@ -60,6 +77,9 @@ VALUES
     ('Munich', 'Grain', 1.038),
     ('Super fancy 1', 'Grain', 1.038);
 
+/*
+    Create Yeast Table
+*/
 CREATE TABLE yeast (
     id INT AUTO_INCREMENT PRIMARY KEY,
     yeast_name VARCHAR(255) NOT NULL,
@@ -70,6 +90,9 @@ CREATE TABLE yeast (
     temperature_max DECIMAL(3,1)
 );
 
+/*
+    Create Sample Yeast
+*/
 INSERT INTO yeast (yeast_name, type, attenuation_min, attenuation_max, temperature_min, temperature_max)
 VALUES
     ('Australian Ale', 'Ale', 70.00, 75.00, 18.3, 21.1),
@@ -79,17 +102,26 @@ VALUES
     ('German Bock Lager', 'Lager', 70.00, 76.00, 8.9, 12.8),
     ('Mexican Lager', 'Lager', 70.00, 78.00, 10.0, 12.8);
 
+/*
+    Create Style Table
+*/
 CREATE TABLE style (
     id INT AUTO_INCREMENT PRIMARY KEY,
     style_name VARCHAR(255) NOT NULL,
     type ENUM('Lager', 'Ale')
 );
 
+/*
+    Create Sample Styles
+*/
 INSERT INTO style (style_name, type)
 VALUES
     ("Pale Ale", "Ale"),
     ("Extra Pale", "Lager");;
 
+/*
+    Create Recipe Table
+*/
 CREATE TABLE recipe (
     id INT AUTO_INCREMENT PRIMARY KEY,
     recipe_name VARCHAR(255) NOT NULL,
@@ -98,7 +130,9 @@ CREATE TABLE recipe (
     FOREIGN KEY user_key(user_id) REFERENCES users(id)
 );
 
-
+/*
+    Create Recipe Yeast association
+*/
 CREATE TABLE recipe_yeast(
     recipe_id INT NOT NULL,
     yeast_id INT NOT NULL,
@@ -107,7 +141,9 @@ CREATE TABLE recipe_yeast(
     FOREIGN KEY yeast_key(yeast_id) REFERENCES yeast(id)
 );
 
-
+/*
+    Create Recipe Hops association
+*/
 CREATE TABLE recipe_hops(
     recipe_id INT NOT NULL,
     hop_id INT NOT NULL,
@@ -116,7 +152,9 @@ CREATE TABLE recipe_hops(
     FOREIGN KEY hop_key(hop_id) REFERENCES hops(id)
 );
 
-
+/*
+    Create Recipe Malt association
+*/
 CREATE TABLE recipe_malt(
     recipe_id INT NOT NULL,
     malt_id INT NOT NULL,
@@ -125,7 +163,9 @@ CREATE TABLE recipe_malt(
     FOREIGN KEY malt_key(malt_id) REFERENCES malt(id)
 );
 
-
+/*
+    Create Recipe Style association
+*/
 CREATE TABLE recipe_style(
     recipe_id INT NOT NULL,
     style_id INT NOT NULL,
@@ -133,6 +173,11 @@ CREATE TABLE recipe_style(
     FOREIGN KEY recipe_key(recipe_id) REFERENCES recipe(id),
     FOREIGN KEY style_key(style_id) REFERENCES style(id)
 );
+
+
+/*
+    Sample Recipes!
+*/
 
 /*
     Jacks Super Awesome Ale Recipe
