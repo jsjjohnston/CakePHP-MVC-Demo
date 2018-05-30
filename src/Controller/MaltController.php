@@ -2,6 +2,7 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
+use Cake\Log\Log;
 
 /**
  * Malt Controller
@@ -53,9 +54,10 @@ class MaltController extends AppController
             $malt = $this->Malt->patchEntity($malt, $this->request->getData());
             if ($this->Malt->save($malt)) {
                 $this->Flash->success(__('The malt has been saved.'));
-
+                Log::write('info', $malt . ' Has been saved');
                 return $this->redirect(['action' => 'index']);
             }
+            Log::write('error', $malt . ' could not be saved. Please, try again.');
             $this->Flash->error(__('The malt could not be saved. Please, try again.'));
         }
         $recipe = $this->Malt->Recipe->find('list', ['limit' => 200]);
@@ -78,9 +80,10 @@ class MaltController extends AppController
             $malt = $this->Malt->patchEntity($malt, $this->request->getData());
             if ($this->Malt->save($malt)) {
                 $this->Flash->success(__('The malt has been saved.'));
-
+                Log::write('info', $malt . ' Has been saved');
                 return $this->redirect(['action' => 'index']);
             }
+            Log::write('error', $malt . ' could not be saved. Please, try again.');
             $this->Flash->error(__('The malt could not be saved. Please, try again.'));
         }
         $recipe = $this->Malt->Recipe->find('list', ['limit' => 200]);
@@ -99,8 +102,10 @@ class MaltController extends AppController
         $this->request->allowMethod(['post', 'delete']);
         $malt = $this->Malt->get($id);
         if ($this->Malt->delete($malt)) {
+            Log::write('info', $malt . ' Has been saved');
             $this->Flash->success(__('The malt has been deleted.'));
         } else {
+            Log::write('error', $malt . ' could not be deleted. Please, try again');
             $this->Flash->error(__('The malt could not be deleted. Please, try again.'));
         }
 

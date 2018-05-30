@@ -2,6 +2,7 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
+use Cake\Log\Log;
 
 /**
  * Yeast Controller
@@ -53,9 +54,10 @@ class YeastController extends AppController
             $yeast = $this->Yeast->patchEntity($yeast, $this->request->getData());
             if ($this->Yeast->save($yeast)) {
                 $this->Flash->success(__('The yeast has been saved.'));
-
+                Log::write('info', $yeast . ' Has been saved');
                 return $this->redirect(['action' => 'index']);
             }
+            Log::write('error', $yeast . ' could not be saved. Please, try again');
             $this->Flash->error(__('The yeast could not be saved. Please, try again.'));
         }
         $this->set(compact('yeast', 'recipe'));
@@ -77,9 +79,10 @@ class YeastController extends AppController
             $yeast = $this->Yeast->patchEntity($yeast, $this->request->getData());
             if ($this->Yeast->save($yeast)) {
                 $this->Flash->success(__('The yeast has been saved.'));
-
+                Log::write('info', $yeast . ' Has been saved');
                 return $this->redirect(['action' => 'index']);
             }
+            Log::write('error', $yeast . ' could not be saved. Please, try again');
             $this->Flash->error(__('The yeast could not be saved. Please, try again.'));
         }
         $this->set(compact('yeast', 'recipe'));
@@ -97,8 +100,10 @@ class YeastController extends AppController
         $this->request->allowMethod(['post', 'delete']);
         $yeast = $this->Yeast->get($id);
         if ($this->Yeast->delete($yeast)) {
+            Log::write('info', $yeast . ' Has been deleted');
             $this->Flash->success(__('The yeast has been deleted.'));
         } else {
+            Log::write('error', $yeast . ' could not be deleted. Please, try again');
             $this->Flash->error(__('The yeast could not be deleted. Please, try again.'));
         }
 

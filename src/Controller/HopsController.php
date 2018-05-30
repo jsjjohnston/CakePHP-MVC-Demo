@@ -2,6 +2,7 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
+use Cake\Log\Log;
 
 /**
  * Hops Controller
@@ -53,9 +54,10 @@ class HopsController extends AppController
             $hop = $this->Hops->patchEntity($hop, $this->request->getData());
             if ($this->Hops->save($hop)) {
                 $this->Flash->success(__('The hop has been saved.'));
-
+                Log::write('info', $hop . ' Has been saved');
                 return $this->redirect(['action' => 'index']);
             }
+            Log::write('error', $hop . ' The hop could not be saved. Please, try again.');
             $this->Flash->error(__('The hop could not be saved. Please, try again.'));
         }
         $recipe = $this->Hops->Recipe->find('list', ['limit' => 200]);
@@ -78,9 +80,10 @@ class HopsController extends AppController
             $hop = $this->Hops->patchEntity($hop, $this->request->getData());
             if ($this->Hops->save($hop)) {
                 $this->Flash->success(__('The hop has been saved.'));
-
+                Log::write('info', $hop . ' Has been saved');
                 return $this->redirect(['action' => 'index']);
             }
+            Log::write('error', $hop . ' The hop could not be saved. Please, try again.');
             $this->Flash->error(__('The hop could not be saved. Please, try again.'));
         }
         $recipe = $this->Hops->Recipe->find('list', ['limit' => 200]);
@@ -99,8 +102,10 @@ class HopsController extends AppController
         $this->request->allowMethod(['post', 'delete']);
         $hop = $this->Hops->get($id);
         if ($this->Hops->delete($hop)) {
+            Log::write('info', $hop . ' The hop has been deleted.');
             $this->Flash->success(__('The hop has been deleted.'));
         } else {
+            Log::write('error', $hop . ' The hop could not be deleted. Please, try again.');
             $this->Flash->error(__('The hop could not be deleted. Please, try again.'));
         }
 

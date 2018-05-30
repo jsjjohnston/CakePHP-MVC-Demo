@@ -2,6 +2,7 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
+use Cake\Log\Log;
 
 /**
  * Style Controller
@@ -53,9 +54,10 @@ class StyleController extends AppController
             $style = $this->Style->patchEntity($style, $this->request->getData());
             if ($this->Style->save($style)) {
                 $this->Flash->success(__('The style has been saved.'));
-
+                Log::write('info', $Style . ' Has been saved');
                 return $this->redirect(['action' => 'index']);
             }
+            Log::write('error', $Style . ' could not be saved. Please, try again.');
             $this->Flash->error(__('The style could not be saved. Please, try again.'));
         }
         $type = $this->Style->find('list', ['limit' => 200]);
@@ -78,9 +80,10 @@ class StyleController extends AppController
             $style = $this->Style->patchEntity($style, $this->request->getData());
             if ($this->Style->save($style)) {
                 $this->Flash->success(__('The style has been saved.'));
-
+                Log::write('info', $Style . ' Has been saved');
                 return $this->redirect(['action' => 'index']);
             }
+            Log::write('error', $Style . ' could not be saved. Please, try again.');
             $this->Flash->error(__('The style could not be saved. Please, try again.'));
         }
         $recipe = $this->Style->Recipe->find('list', ['limit' => 200]);
@@ -99,8 +102,10 @@ class StyleController extends AppController
         $this->request->allowMethod(['post', 'delete']);
         $style = $this->Style->get($id);
         if ($this->Style->delete($style)) {
+            Log::write('info', $Style . ' Has been deleted');
             $this->Flash->success(__('The style has been deleted.'));
         } else {
+            Log::write('info', $Style . ' could not be deleted. Please, try again.');
             $this->Flash->error(__('The style could not be deleted. Please, try again.'));
         }
 

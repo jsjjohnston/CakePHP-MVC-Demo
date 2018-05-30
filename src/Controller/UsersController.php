@@ -3,6 +3,7 @@ namespace App\Controller;
 
 use App\Controller\AppController;
 use Cake\Event\Event;
+use Cake\Log\Log;
 
 /**
  * Users Controller
@@ -82,9 +83,10 @@ class UsersController extends AppController
 
             if ($this->Users->save($user)) {
                 $this->Flash->success(__('The user has been saved.'));
-
+                Log::write('info', $user . ' The user has been saved.');
                 return $this->redirect(['action' => 'index']);
             }
+            Log::write('error', $user . ' The user could not be saved. Please, try again.');
             $this->Flash->error(__('The user could not be saved. Please, try again.'));
         }
         $this->set(compact('user'));
@@ -106,9 +108,10 @@ class UsersController extends AppController
             $user = $this->Users->patchEntity($user, $this->request->getData());
             if ($this->Users->save($user)) {
                 $this->Flash->success(__('The user has been saved.'));
-
+                Log::write('info', $user . ' The user has been saved.');
                 return $this->redirect(['action' => 'index']);
             }
+            Log::write('error', $user . ' The user could not be saved. Please, try again.');
             $this->Flash->error(__('The user could not be saved. Please, try again.'));
         }
         $this->set(compact('user'));
@@ -126,8 +129,10 @@ class UsersController extends AppController
         $this->request->allowMethod(['post', 'delete']);
         $user = $this->Users->get($id);
         if ($this->Users->delete($user)) {
+            Log::write('info', $user . ' The user has been deleted.');
             $this->Flash->success(__('The user has been deleted.'));
         } else {
+            Log::write('error', $user . ' The user could not be deleted. Please, try again.');
             $this->Flash->error(__('The user could not be deleted. Please, try again.'));
         }
 
@@ -143,16 +148,23 @@ class UsersController extends AppController
                 $this->Flash->success('Login Successful.');
                 if($user['role'] === 'Admin')
                 {
+                    Log::write('info', $user . ' Logged in');
                     return $this->redirect(['controller' => 'users', 'action' => 'admin']);
                 } else
                 {
+                    Log::write('info', $user . ' Logged in');
                     return $this->redirect($this->Auth->redirectUrl());
                 }
             }
+        
+        Log::write('error', $user . ' Failed Logged in');
         $this->Flash->error('Your username or password is incorrect.');
         }
     }
 
+    /*
+        Function for admin actions
+    */
     public function admin()
     {
         
