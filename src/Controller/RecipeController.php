@@ -59,14 +59,14 @@ class RecipeController extends AppController
 
             $recipe->user_id = $this->Auth->user('id');
             if ($this->Recipe->save($recipe)) {
-                Log::write('info', $Recipe . ' Has been saved');
+                Log::write('info', $recipe['recipe_name'] . ' Has been saved');
                 $this->Flash->success(__('The recipe has been saved.'));
 
                 //return $this->redirect(['action' => 'index']);
             }
             else
             {
-                Log::write('error', $Recipe . ' could not be saved. Please, try again.');
+                Log::write('error', 'Recipe could not be saved. Please, try again.');
                 $this->Flash->error(__('The recipe could not be saved. Please, try again.'));
             }
         }
@@ -110,10 +110,10 @@ class RecipeController extends AppController
         $this->request->allowMethod(['post', 'delete']);
         $recipe = $this->Recipe->get($id);
         if ($this->Recipe->delete($recipe)) {
-            Log::write('info', $Recipe . ' The recipe has been deleted.');
+            Log::write('info', $recipe['recipe_name'] . ' The recipe has been deleted.');
             $this->Flash->success(__('The recipe has been deleted.'));
         } else {
-            Log::write('error', $Recipe . ' The recipe has been deleted.');
+            Log::write('error', $recipe['recipe_name'] . ' The recipe has been deleted.');
             $this->Flash->error(__('The recipe could not be deleted. Please, try again.'));
         }
 

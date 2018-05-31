@@ -10,7 +10,7 @@
     <fieldset>
         <legend><?= __('Modify Existing Style') ?></legend>
         <?php
-            echo $this->Form->control('name');
+            echo $this->Form->control('style_name');
             echo $this->Form->control('type',['options'=>['Lager'=>'Lager','Ale'=>'Ale']]);
         ?>
     </fieldset>

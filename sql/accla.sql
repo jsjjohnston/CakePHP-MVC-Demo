@@ -6,6 +6,8 @@
 
 DROP DATABASE IF EXISTS accla;
 CREATE DATABASE IF NOT EXISTS accla;
+CREATE USER IF NOT EXISTS 'acclaAdmin'@'localhost' IDENTIFIED BY 'hGlTogXK05WcmXAN';
+GRANT ALL PRIVILEGES ON * . * TO 'acclaAdmin'@'localhost';
 USE accla;
 
 /*

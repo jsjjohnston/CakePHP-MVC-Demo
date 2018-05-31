@@ -30,6 +30,7 @@ class UsersController extends AppController
     public function logout()
     {
         $this->Flash->success('You are now logged out.');
+        Log::write('info', $this->Auth->user()['user_name'] . ' Logged Out');
         $this->Auth->logout();
         return $this->redirect($this->Auth->logout());
     }
@@ -84,7 +85,7 @@ class UsersController extends AppController
             if ($this->Users->save($user)) {
                 $this->Flash->success(__('The user has been saved.'));
                 Log::write('info', $user . ' The user has been saved.');
-                return $this->redirect(['action' => 'index']);
+                return $this->redirect(['action' => 'login']);
             }
             Log::write('error', $user . ' The user could not be saved. Please, try again.');
             $this->Flash->error(__('The user could not be saved. Please, try again.'));
@@ -148,16 +149,16 @@ class UsersController extends AppController
                 $this->Flash->success('Login Successful.');
                 if($user['role'] === 'Admin')
                 {
-                    Log::write('info', $user . ' Logged in');
+                    Log::write('info', $user['user_name'] . ' Logged in');
                     return $this->redirect(['controller' => 'users', 'action' => 'admin']);
                 } else
                 {
-                    Log::write('info', $user . ' Logged in');
+                    Log::write('info', $user['user_name'] . ' Logged in');
                     return $this->redirect($this->Auth->redirectUrl());
                 }
             }
         
-        Log::write('error', $user . ' Failed Logged in');
+        Log::write('error', 'Failed Logged in');
         $this->Flash->error('Your username or password is incorrect.');
         }
     }

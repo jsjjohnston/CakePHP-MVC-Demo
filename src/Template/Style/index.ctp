@@ -9,7 +9,7 @@
     <table cellpadding="0" cellspacing="0">
         <thead>
             <tr>
-                <th scope="col"><?= $this->Paginator->sort('name') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('style_name') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('type') ?></th>
                 <th scope="col" class="actions"><?= __('Actions') ?></th>
             </tr>
@@ -17,7 +17,7 @@
         <tbody>
             <?php foreach ($style as $style): ?>
             <tr>
-                <td><?= h($style->name) ?></td>
+                <td><?= h($style->style_name) ?></td>
                 <td><?= h($style->type) ?></td>
                 <td class="actions">
                     <?= $this->Html->link(__('Edit'), ['action' => 'edit', $style->id]) ?>

@@ -17,7 +17,7 @@
             $user = $session->read('Auth.User');
             if(!empty($user) && $user['role'] == 'Admin') {
                 echo $this->Form->control('role', [
-                    'options' => ['Admin' => 'Admin', 'Author' => 'Author']
+                    'options' => ['admin' => 'Admin', 'author' => 'Author']
                     ]);
                 }
 
