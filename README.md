@@ -15,6 +15,8 @@
 1. Copy __\accla__ to you __www__ folder
 2. In __\accla\sql__ run the __accla.sql__ script in your database environment. 
 >For example though the myphp web interface
+3. Access though your web server 
+>For example (http://127.0.0.1/accla/)
 
 # Users
 | Name  | Email           | Pass  | Role  |
