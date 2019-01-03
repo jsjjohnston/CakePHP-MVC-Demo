@@ -1,4 +1,5 @@
 # Introduction 
+A demonstration of an MVC architecture website developed with CakePHP. The demo site is a Beer recipe database site that users can save and share homebrew recipes.  
 
 # Requirements
 * HTTP Server. For example: Apache. Having mod_rewrite is preferred, but by no means required.
