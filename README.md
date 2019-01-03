@@ -13,7 +13,7 @@
 
 # Users
 | Name  | Email           | Pass  | Role  |
-| :---: | :-------------: | :---: | :----:|
+| ----- | --------------- | ----- | ----- |
 | Admin | admin@accla.com | admin | Admin |
 | Tom   | tom@accla.com   | tom   | Author|
 | Jack  | jack@accla.com  | jack  | Author|
@@ -22,7 +22,7 @@
 
 # Roles
 | Type  | Description                                                                                       |
-| :---: | :-----------------------------------------------------------------------------------------------: |
+| :---: | ------------------------------------------------------------------------------------------------- |
 | Admin | Has comeple full Access to everything in the site including adding, Editing, deleting Ingredients |
 | Author| Can view others recipes but cannot modify or delete. Cannot add, edit or delete ingredients. Can Add Modify and delete Own recipes. |
 
