@@ -21,13 +21,14 @@
 >The login page should be available from the home page (http://127.0.0.1/accla) or directly (http://127.0.0.1/accla/users/login) and uses the Email Address and Password for the login criteria.
 
 # Roles
-| Type  | Description|
-| ----- | -----------|
+| Type  | Description                                                                                       |
+| :---: | :-----------------------------------------------------------------------------------------------: |
 | Admin | Has comeple full Access to everything in the site including adding, Editing, deleting Ingredients |
 | Author| Can view others recipes but cannot modify or delete. Cannot add, edit or delete ingredients. Can Add Modify and delete Own recipes. |
 
 # Log Files
-By default all log files can be found in \accla\logs
+By default all log files can be found in __\accla\logs__
+
 | File      | Discription                                         |
 | --------- | --------------------------------------------------  |
 | debug.log | SQL database add edit remove delete and user logins |
