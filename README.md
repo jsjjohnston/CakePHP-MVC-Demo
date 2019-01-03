@@ -25,7 +25,7 @@
 | Tom   | tom@accla.com   | tom   | Author|
 | Jack  | jack@accla.com  | jack  | Author|
 
->The login page should be available from the home page (http://127.0.0.1/accla) or directly (http://127.0.0.1/accla/users/login) and uses the Email Address and Password for the login criteria.
+>The provided database script will configure the database including the user account table and sample users and recipes. The login page should be available from the home page (http://127.0.0.1/accla) or directly (http://127.0.0.1/accla/users/login) and uses the Email Address and Password for the login criteria.
 
 # Roles
 | Type  | Description                                                                                       |
